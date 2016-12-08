@@ -134,3 +134,14 @@ function tick(event) {
         stage.update(event);
     }
 }
+
+// modified from http://www.skipser.com/test/googlecode/gplus-youtubeembed/test.html
+function loadSoundcloud(id, src) {
+    var code = '<iframe width="100%" height="450" scrolling="no" frameborder="no" src= "' + src + '"></iframe>'
+    var iframe = document.createElement('div');
+    var div=document.getElementById(id + "-soundcloud");
+
+    iframe.innerHTML=code;
+    iframe=iframe.firstChild;
+    div.parentNode.replaceChild( iframe, div)
+}
