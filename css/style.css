@@ -1,0 +1,165 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 15vmin;
+  text-align: center;
+}
+
+h2,
+.pullquote,
+.back-to-observer,
+.quote-text {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+header {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(217, 79, 84, 0.8);
+}
+
+iframe {
+  width: 450px;
+}
+
+article {
+  background-color: #EBEBEB;
+}
+
+article p {
+  text-indent: 2rem;
+  line-height: 1.5;
+}
+
+footer {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.vertically-center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bounded-width {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}
+
+.pullquote {
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: solid .5rem;
+  border-bottom: solid .5rem;
+}
+
+
+
+
+.map-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.person-container {
+  width: 900px;
+  margin: 3rem auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.person-container.right{
+  flex-wrap: wrap-reverse;
+}
+
+.audio-quote {
+  width: 450px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.person-info {
+  padding-bottom: 0.5rem;
+  border-bottom: solid .25rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.quote-text {
+  margin-top: 0.5rem;
+  text-align: inherit;
+}
+
+#mapCanvas {
+  height: 100%;
+  width: auto;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+@media (max-width: 900px) {
+  .person-container {
+    width: 450px;
+  }
+  .audio-quote {
+    width: 450px;
+    padding: 0.5rem 0;
+  }
+}
+
+@media screen and (max-aspect-ratio: 1706/960) { /*dims of map img*/
+  #mapCanvas {
+    height: 100%;
+    width: auto;
+    position: relative;
+    left: 23%;
+    transform: translate(-23%, 0%);
+  }
+}
