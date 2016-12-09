@@ -1,5 +1,11 @@
+// $('header').click(function() {
+//     $(this).fadeOut();
+// });
+/* no scrolling on landing page until click */
+disable_scroll();
+
 $('header').click(function() {
-    $(this).fadeOut();
+    $('header').fadeOut('fast', enable_scroll());
 });
 
 var canvas, stage;
@@ -144,4 +150,47 @@ function loadSoundcloud(id, src) {
     iframe.innerHTML=code;
     iframe=iframe.firstChild;
     div.parentNode.replaceChild( iframe, div)
+}
+
+
+
+// credit for the following from http://jsfiddle.net/prSqz/17/
+// prevents scrolling
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = [37, 38, 39, 40];
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;
+}
+
+function keydown(e) {
+    for (var i = keys.length; i--;) {
+        if (e.keyCode === keys[i]) {
+            preventDefault(e);
+            return;
+        }
+    }
+}
+
+function wheel(e) {
+  preventDefault(e);
+}
+
+function disable_scroll() {
+  if (window.addEventListener) {
+      window.addEventListener('DOMMouseScroll', wheel, false);
+  }
+  window.onmousewheel = document.onmousewheel = wheel;
+  document.onkeydown = keydown;
+}
+
+function enable_scroll() {
+    if (window.removeEventListener) {
+        window.removeEventListener('DOMMouseScroll', wheel, false);
+    }
+    window.onmousewheel = document.onmousewheel = document.onkeydown = null;
 }
