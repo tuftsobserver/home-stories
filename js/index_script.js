@@ -1,11 +1,19 @@
-// $('header').click(function() {
-//     $(this).fadeOut();
-// });
-/* no scrolling on landing page until click */
 disable_scroll();
+adjustSizeCSS();
+
+$(window).scroll(hideButtons);
+$(window).resize(adjustSizeCSS);
 
 $('header').click(function() {
-    $('header').fadeOut('fast', enable_scroll());
+    headerClick();
+});
+
+$('.scroll-article').click(function() {
+    scrollTo('article');
+});
+
+$('.scroll-map').click(function() {
+    scrollTo('.map-container');
 });
 
 var canvas, stage;
@@ -41,16 +49,6 @@ window.onload = function() {
     var map = new Image();
     map.src = "img/map.png";
     map.onload = handleMapLoad;
-
-    // load the audio into their iframes
-    // loading is deffered until here for faster page load
-    // thx to https://varvy.com/pagespeed/defer-videos.html
-    var vidDefer = document.getElementsByTagName('iframe');
-    for (var i = 0; i < vidDefer.length; i++) {
-        if (vidDefer[i].getAttribute('data-src')) {
-            vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-        }
-    }
 };
 
 function stop() {
@@ -152,6 +150,7 @@ function loadSoundcloud(id, src) {
     div.parentNode.replaceChild( iframe, div)
 }
 
+/*********************** no-scroll functions *********************************/
 
 
 // credit for the following from http://jsfiddle.net/prSqz/17/
@@ -193,4 +192,45 @@ function enable_scroll() {
         window.removeEventListener('DOMMouseScroll', wheel, false);
     }
     window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+}
+
+/******************* end no-scroll functions *********************************/
+
+var headerClick = headerReplaceText;
+
+function headerReplaceText() {
+    $('header > .vertically-center').html("<h1>Click dots on map to hear<br>stories from these homes</h1><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
+    headerClick = headerFade;
+}
+
+function headerFade() {
+    $('header').fadeOut('fast', enable_scroll());
+}
+
+function hideButtons() {
+    if (document.body.scrollTop > $('article').position().top) {
+        $('.scroll-article').hide();
+        $('.scroll-map').css('bottom', 0);
+    } else {
+        $('.scroll-article').show();
+        $('.scroll-map').css('bottom', '2rem');
+    }
+
+    if (document.body.scrollTop > $('.audio-container').position().top) {
+        $('.scroll-map').show();
+    } else {
+        $('.scroll-map').hide();
+    }
+}
+
+function scrollTo(loc) {
+    $('html, body').animate({
+        scrollTop: $(loc).offset().top
+    }, 1000);
+}
+
+function adjustSizeCSS() {
+    var w = $('.soundcloud').width();
+    $('.soundcloud').height(w);
+    $('.play-button').css('top', 0-w);
 }
