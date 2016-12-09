@@ -223,9 +223,9 @@ function hideButtons() {
     }
 }
 
-function scrollTo(loc) {
+function scrollTo(location) {
     $('html, body').animate({
-        scrollTop: $(loc).offset().top
+        scrollTop: $(location).offset().top
     }, 1000);
 }
 
