@@ -1,5 +1,6 @@
 disable_scroll();
 adjustSizeCSS();
+hideButtons();
 
 $(window).scroll(hideButtons);
 $(window).resize(adjustSizeCSS);
@@ -39,11 +40,13 @@ window.onload = function() {
     stage = new createjs.Stage(canvas);
 
     // enable touch interactions if supported on the current device:
-    createjs.Touch.enable(stage);
+    createjs.Touch.enable(stage, false, true);
+
 
     // enabled mouse over / out events
     stage.enableMouseOver(10);
-    stage.mouseMoveOutside = true; // keep tracking the mouse even when it leaves the canvas
+    stage.mouseMoveOutside = false; // keep tracking the mouse even when it leaves the canvas
+
 
     // load the map:
     var map = new Image();
@@ -199,7 +202,7 @@ function enable_scroll() {
 var headerClick = headerReplaceText;
 
 function headerReplaceText() {
-    $('header > .vertically-center').html("<h1>Click dots on map to hear<br>stories from these homes</h1><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
+    $('header > .vertically-center').html("<h1>Click dots on the map to hear<br>stories from these homes</h1><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
     headerClick = headerFade;
 }
 
@@ -208,7 +211,7 @@ function headerFade() {
 }
 
 function hideButtons() {
-    if (document.body.scrollTop > $('article').position().top) {
+    if (document.body.scrollTop >= $('article').position().top) {
         $('.scroll-article').hide();
         $('.scroll-map').css('bottom', 0);
     } else {
