@@ -18,8 +18,7 @@ $('.scroll-map').click(function() {
 });
 
 var canvas, stage;
-var mouseTarget;	// the display object currently under the mouse, or being dragged
-var dragStarted;	// indicates whether we are currently in a drag operation
+var mouseTarget; // the display object currently under the mouse, or being dragged
 var offset;
 var update = true;
 
@@ -42,11 +41,8 @@ window.onload = function() {
     // enable touch interactions if supported on the current device:
     createjs.Touch.enable(stage, false, true);
 
-
     // enabled mouse over / out events
     stage.enableMouseOver(10);
-    stage.mouseMoveOutside = false; // keep tracking the mouse even when it leaves the canvas
-
 
     // load the map:
     var map = new Image();
@@ -101,14 +97,6 @@ function handleImageLoad(event) {
         button.on("mousedown", function (evt) {
             this.parent.addChild(this);
             this.offset = {x: this.x - evt.stageX, y: this.y - evt.stageY};
-        });
-
-        // the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
-        button.on("pressmove", function (evt) {
-            this.x = evt.stageX + this.offset.x;
-            this.y = evt.stageY + this.offset.y;
-            // indicate that the stage should be updated on the next tick:
-            update = true;
         });
 
         // make circle bigger when you hover over it
@@ -202,7 +190,7 @@ function enable_scroll() {
 var headerClick = headerReplaceText;
 
 function headerReplaceText() {
-    $('header > .vertically-center').html("<h1>Click dots on the map to hear<br>stories from these homes</h1><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
+    $('header > .vertically-center').html("<h1>Click dots on map to hear<br>stories from these homes</h1><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
     headerClick = headerFade;
 }
 
