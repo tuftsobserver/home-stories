@@ -191,7 +191,7 @@ function enable_scroll() {
 var headerClick = headerReplaceText;
 
 function headerReplaceText() {
-    $('header > .vertically-center').html("<h1>Click dots on map to hear<br>stories from these homes</h1><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
+    $('header > .vertically-center').html("<h2>Click dots on map to hear<br>stories from these homes</h2><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
     headerClick = headerFade;
 }
 
