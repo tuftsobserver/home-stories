@@ -40,6 +40,7 @@ window.onload = function() {
 
     // enable touch interactions if supported on the current device:
     createjs.Touch.enable(stage, false, true);
+    stage.preventSelection = false;
 
     // enabled mouse over / out events
     stage.enableMouseOver(10);
