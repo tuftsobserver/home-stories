@@ -26,11 +26,11 @@ var coords = [
     ["kavya",     500, 500],  // andhra
     ["tiara",     650, 380],  // calcutta
     ["natasha-ka",540, 650],  // colombo
-    ["maimuna",   690, 360],  // dhaka
+    // ["maimuna",   690, 360],  // dhaka
     ["ravi",      390, 380],  // gujarat
     ["danish",    330, 360],  // karachi
     ["natasha-kw",450, 230],  // lahore
-    ["arushi",    440, 320],  // rajasthan
+    // ["arushi",    440, 320],  // rajasthan
     ["iris",      510, 610],  // tamil nadu
 ];
 
@@ -191,7 +191,7 @@ function enable_scroll() {
 var headerClick = headerReplaceText;
 
 function headerReplaceText() {
-    $('header > .vertically-center').html("<h2>Click dots on map to hear<br>stories from these homes</h2><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
+    $('header > .vertically-center').html("<h2>Click dots on the map to hear<br>stories from these homes</h2><br><h2><i class='fa fa-hand-o-up' aria-hidden='true'></i> Click Anywhere</h2>");
     headerClick = headerFade;
 }
 
